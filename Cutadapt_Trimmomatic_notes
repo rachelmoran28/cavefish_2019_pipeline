@@ -1,0 +1,10 @@
+Plan as of 5/23/19 is to re-start pipeline from raw reads for Caballo Moro, Jineo, Escondido, and new samples from Josh Gross.
+Will use Adam’s pipeline and alignments for all other individuals (https://github.umn.edu/aherman/cavefish_RIS).
+All raw reads processed with cutadapt-1.2.1 and trimmomatic-0.30.
+
+Samples from BGI (Jineo, Escondido, and all other samples from JG) had unknown barcodes (kept private by BGI) and were processed with cutadapt using the following Illumina TruSeq adapters:
+R1: GATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
+R2: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
+
+Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt.
+
