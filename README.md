@@ -36,7 +36,7 @@ Step 2: Alignment to surface and cave genomes
 
 For each sample, processed reads were aligned to both the cavefish (v1) and the surface fish (v2) genomes.
 
-Used array jobs rather than parallel for alignments to be more efficient. 
+Rather than using parallel used array jobs for alignments, which is more efficient. 
 
 The script make_align_jobs_all_raw.sh will generate jobs (a list of commands, one for each sample) that can be specified in the array script array_map.sh. Run the following command to get the list of commands writted to the file raw_bwa_commands_cavefish.txt (can modify make_align_jobs_all_raw.sh for alignment to cave or sruface genome):
 
@@ -74,6 +74,8 @@ Files produced in this step will all end in *_dupsmarked_rgadd.bam.
 There will also be a set of intermedeiate files ending in *_dupsmarked.bam, which can be deleted.
 
 
+Can calcualte depth of coverage for each sample using get_cov_depth.sh (can be edited for use with files aligned to cave or surface genome).
+
 
 ########################################################################
 
@@ -82,14 +84,18 @@ Step 4: Split bams into mapped and unmapped reads
 
 Use samtools view to split bams from Step 3 (dups marked and read groups added)into mapped and unmapped reads. We will use the  bams with mapped reads only in the next step.
 
+At the end of this step, all mapped-reads-only bam files will end in *_mapped.bam and all unmapped-reads-only bam files will end in *_unmapped.bam.
+
+Mapped bams need to be indexed using samtools index before moving on to the next step (can use par_index.sh).
 
 
 
 ########################################################################
 
-Step 5
+Step 5: Haplotype calling
 
 Used mapped bams for gatk haplotype caller.
 
+haplotypecaller.sh can be modified for use with cave or surface aligned bams.
 
 
