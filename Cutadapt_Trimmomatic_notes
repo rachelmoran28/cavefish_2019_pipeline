@@ -1,10 +1,29 @@
-Plan as of 5/23/19 is to re-start pipeline from raw reads for Caballo Moro, Jineo, Escondido, and new samples from Josh Gross.
-Will use Adam’s pipeline and alignments for all other individuals (https://github.umn.edu/aherman/cavefish_RIS).
-All raw reads processed with cutadapt-1.2.1 and trimmomatic-0.30.
+5/23/19. Re-started pipeline from raw reads for Caballo Moro, Jineo, Escondido, and new samples from Josh Gross and UMGC ("June2019" samples).
 
-Samples from BGI (Jineo, Escondido, and all other samples from JG) had unknown barcodes (kept private by BGI) and were processed with cutadapt using the following Illumina TruSeq adapters:
+Used Adam’s pipeline and Adam's alignments for all other individuals (https://github.umn.edu/aherman/cavefish_RIS).
+
+################################################################################################
+
+Step 1: Adapter removal and quality trimming 
+
+
+All raw reads were processed with cutadapt-1.2.1 and trimmomatic-0.30.
+
+Samples from BGI (Jineo, Escondido, and all other samples from JG) had unknown barcodes (kept private by BGI), so they were processed with cutadapt using the following Illumina TruSeq adapters and NNNs in place of the individual barcode on R1 (need to suple wildcard flag to cutadapt for this to work):
 R1: GATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
 R2: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
 
-Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt.
+Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt. Cutadapt version 1.2.1 and the newest version (2.3.0) both had issues processing these samples (kept resulting in corrupt fastqs with extra lines), so trimmomatic-0.30 was used to do the adapter clipping and quality trimming for these samples.
+
+After processing with cutadapt and/or trimmomatic, reads were ready to align.
+
+
+################################################################################################
+
+Step 2: Alignment to surface and cave genomes
+
+
+Processed reads for each sample were aligned to both the cavefish (v1) and the surface fish (v2) genomes.
+
+
 
