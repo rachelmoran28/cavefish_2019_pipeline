@@ -13,9 +13,16 @@ Samples from BGI (Jineo, Escondido, and all other samples from JG) had unknown b
 R1: GATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
 R2: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
 
-Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt. Cutadapt version 1.2.1 and the newest version (2.3.0) both had issues processing these samples (kept resulting in corrupt fastqs with extra lines), so trimmomatic-0.30 was used to do the adapter clipping and quality trimming for these samples.
+See the following scripts for examples of how reads were processed: 
+par_fastqc.sh
+par_Gross_samples_cutadapt.sh
+par_Gross_samples_trimmomatic.sh
 
-After processing with cutadapt and/or trimmomatic, reads were ready to align.
+Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt. Cutadapt version 1.2.1 and the newest version (2.3.0) both had issues processing these samples (kept resulting in corrupt fastqs with extra lines), so trimmomatic-0.30 was used to do the adapter clipping and quality trimming for these samples (see par_CabMoro_trimmomatic.sh).
+
+After processing with cutadapt and/or trimmomatic, unpaired reads from R1 and R2 files need to be combined into one fastq file (see par_combine_unpair.sh).
+
+Reads are then ready to align.
 
 
 ################################################################################################
@@ -23,7 +30,17 @@ After processing with cutadapt and/or trimmomatic, reads were ready to align.
 Step 2: Alignment to surface and cave genomes
 
 
-Processed reads for each sample were aligned to both the cavefish (v1) and the surface fish (v2) genomes.
+For each sample, processed reads were aligned to both the cavefish (v1) and the surface fish (v2) genomes.
+
+Used array jobs rather than parallel for alignments. 
+
+The script make_align_jobs_all_raw.sh will generate jobs (a list of commands, one for each sample) that can be specified in the array script array_map.sh. Run the following command to get the list of commands writted to the file raw_bwa_commands_cavefish.txt (can modify make_align_jobs_all_raw.sh for alignment to cave or sruface genome):
+
+./make_align_jobs_all_raw.sh > raw_bwa_commands_cavefish.txt
+
+
+
+
 
 
 
