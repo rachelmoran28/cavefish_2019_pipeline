@@ -4,7 +4,7 @@
 #PBS -j oe
 #PBS -M rmoran@umn.edu
 #PBS -q sb128
-#PBS -t 1
+#PBS -t 1-118
 
 # Load modules
 module load picard-tools/2.3.0
