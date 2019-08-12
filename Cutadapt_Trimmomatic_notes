@@ -4,10 +4,10 @@ Used Adam’s pipeline and Adam's alignments for all other individuals (https://
 
 ################################################################################################
 
-Step 1: Adapter removal and quality trimming 
+Step 1: FastQC, adapter removal and quality trimming 
 
 
-All raw reads were processed with cutadapt-1.2.1 and trimmomatic-0.30.
+All raw reads were quality checked with FastQC and processed with cutadapt-1.2.1 and trimmomatic-0.30.
 
 Samples from BGI (Jineo, Escondido, and all other samples from JG) had unknown barcodes (kept private by BGI), so they were processed with cutadapt using the following Illumina TruSeq adapters and NNNs in place of the individual barcode on R1 (need to suple wildcard flag to cutadapt for this to work):
 R1: GATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
