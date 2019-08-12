@@ -1,8 +1,10 @@
-Summer 2019 
+This is a repository for scripts used by Rachel Moran to process raw cavefish genomic data for use in populations genomic analyses in Summer 2019.
+
 
 Re-started pipeline from raw reads for Caballo Moro, Jineo, Escondido, and new samples from Josh Gross and UMGC ("June2019" samples).
 
 Used Adam’s pipeline and Adam's alignments for all other individuals (https://github.umn.edu/aherman/cavefish_RIS).
+
 
 ########################################################################
 
@@ -55,6 +57,15 @@ Step 3: Mark duplicates and add read groups
 
 For each raw bam file generated in Step 2, use picard to mark duplicates and add read group (i.e. sample name).
 
+Again need to generate a list of commands to feed into an array script:
+
+./make_picard_cavefish_commands.sh > picard_cavefish_commands.txt
+./make_picard_surface_commands.sh > picard_surface_commands.txt
+
+Then, edit array_picard.sh to include the .txt file with the commands you want to submit as an array job.
+
+I've included the job array PBS flag (i.e. #PBS t 1-N) in array_picard.sh, so it can just be submitted with qsub (no need to add t 1-N again when submitting the job).
+
 
 
 ########################################################################
@@ -65,9 +76,11 @@ Step 4: Split bams into mapped and unmapped reads
 Use samtools view to split bams from Step 3 (dups marked and read groups added)into mapped and unmapped reads. We will use the  bams with mapped reads only in the next step.
 
 
+
+
 ########################################################################
 
-Step 4
+Step 5
 
 Used mapped bams for gatk haplotype caller.
 
