@@ -7,6 +7,9 @@
 #PBS -N par_combine_unpaired_Jineo
 
 
+#This script is used to combine unpaired reads from R1 and R2 fastq files prior to alignment with bwa
+
+
 #       The home folder
 export HOME=/home/mcgaughs/shared/Datasets/Reads_ready_to_align/Jineo
 
