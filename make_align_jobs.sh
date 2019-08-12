@@ -2,16 +2,16 @@
 
 #Originally copied from https://github.umn.edu/konox006/SEM_CaveFish/blob/master/Remapping/Scripts/Analysis/Make_Align_Jobs.sh by Tom Kono on 17 July 2018. Lightly modified by Adam Herman.
 
-# Print BWA jobs to STDOUT for easy feeding into task arrays. 
+# Print BWA jobs to STDOUT for easy feeding into task arrays. Can be modified for use with cave or surface genome.
 
 # Define software paths
 SEQTK="/home/mcgaughs/shared/Software/seqtk/seqtk"
 
-# Define output directory
+# Define output directory (cave or surface genome)
 OUTDIR="/home/mcgaughs/shared/Datasets/bams/cave.fish.reference.genome/v1_cavefish_raw_bams"
 #OUTDIR="/home/mcgaughs/shared/Datasets/bams/surface.fish.reference.genome/v2_surfacefish_raw_bams"
 
-# Define the reference index base
+# Define the reference index base (cave or surface genome)
 REFBASE="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/BWA/Astyanax_mexicanus.AstMex102.dna.toplevel.fa.gz"
 #REFBASE="/home/mcgaughs/shared/References/2017-09_Astyanax_mexicanus/BWA/7994_ref_Astyanax_mexicanus-2.0_Complete_gbID"
 
