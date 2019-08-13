@@ -18,8 +18,8 @@ R1: GATCGGAAGAGCACACGTCTGAACTCCAGTCACNNNNNNATCTCGTATGCCGTCTTCTGCTTG
 R2: AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
 
 See the following scripts for examples of how reads were processed: 
-par_fastqc.sh
-par_Gross_samples_cutadapt.sh
+par_fastqc.sh,
+par_Gross_samples_cutadapt.sh,
 par_Gross_samples_trimmomatic.sh
 
 Caballo Moro samples had the same adapters as BGI samples, but barcodes on R1 were known for each individual and supplied to cutadapt. Cutadapt version 1.2.1 and the newest version (2.3.0) both had issues processing these samples (kept resulting in corrupt fastqs with extra lines), so trimmomatic-0.30 was used to do the adapter clipping and quality trimming for these samples (see par_CabMoro_trimmomatic.sh).
