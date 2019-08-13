@@ -20,7 +20,8 @@ REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.
 IODIR="/panfs/roc/scratch/aherman/RIS_cavefish/old_genome_mapping"
 
 #fix path to GATK
-GATK=/panfs/roc/groups/14/mcgaughs/shared/Software/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar
+GATK=//panfs/roc/msisoft/gatk/3.7.0/GenomeAnalysisTK.jar
+#GATK=/panfs/roc/groups/14/mcgaughs/shared/Software/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar
 
 VCFS=($(find ${IODIR}/GVCFs -type f -name *.g.vcf))
 
