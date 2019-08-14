@@ -7,16 +7,18 @@
 
 # Load modules
 module load java
+module load gatk/3.7.0
 
 # Set paths
-GATK="/panfs/roc/groups/14/mcgaughs/shared/Software/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar"
+GATK="/panfs/roc/msisoft/gatk/3.7.0/GenomeAnalysisTK.jar"
 #   V2
 REF="/home/mcgaughs/shared/References/2017-09_Astyanax_mexicanus/7994_ref_Astyanax_mexicanus-2.0_Complete_gbID.fa"
 #   V1
 #REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.AstMex102.dna.toplevel.fa"
 REGFOF="/home/mcgaughs/shared/References/2017-09_Astyanax_mexicanus/GATK_Regions.fof"
 GVCF_DIR="/home/mcgaughs/shared/Datasets/Variant_Calls/Astyanax_mexicanus_v2/Combined_GVCFs"
-OUTPUT_DIR="/panfs/roc/scratch/konox006/SEM_CaveFish/Remapping/Variants"
+
+OUTPUT_DIR="" # Need to make an output direcotry for this step
 
 # Build the sample list
 SAMPLE_LIST=($(find ${GVCF_DIR} -name '*.g.vcf.gz' | sort -V))
