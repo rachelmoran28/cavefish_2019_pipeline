@@ -1,9 +1,10 @@
 #!/bin/bash
-#PBS -l mem=62gb,nodes=1:ppn=24,walltime=36:00:00
+#PBS -l mem=62gb,nodes=1:ppn=24,walltime=48:00:00
 #PBS -m abe
 #PBS -M rmoran@umn.edu
 #PBS -q mesabi
-#PBS -A mcgaughs
+#PBS -N genomeV2_genotyping
+#PBS -j oe
 
 # Load modules
 module load java
@@ -38,14 +39,14 @@ REGION=$(sed "${PBS_ARRAYID}q;d" ${REGFOF})
 REG_BNAME=$(basename ${REGION})
 REG_OUT=${REG_BNAME/.intervals/}
 
-export _JAVA_OPTIONS="-Xmx61000m -Djava.io.tmpdir=/panfs/roc/scratch/konox006/java_tmp"
-java -jar ${GATK} \
+export _JAVA_OPTIONS="-Xmx61000m"
+java -Djava.io.tmpdir=/scratch.local \
+    -jar ${GATK} \
     -T GenotypeGVCFs \
     -R ${REF} \
     -L ${REGION} \
-    --max_alternate_alleles 3 \
     -nt 24 \
     ${GATK_IN[@]} \
     --includeNonVariantSites \
     --heterozygosity 0.005 \
-    -o ${OUTPUT_DIR}/${REG_OUT}_Amexv2.0_wInvariant.vcf
+    -o ${OUTPUT_DIR}/Surfacefish_v2_183samples_wInvariant.vcf
