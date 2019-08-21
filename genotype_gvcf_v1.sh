@@ -38,7 +38,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -R ${REF} \
     -L ${IODIR}/vcf_restart3_intervals.list \ . ### Scaffold list? In the v2 script this list includes Chr 1-25 and then Chr Un (all unplaced scaffolds get grouped together?)
     ${GATK_IN[@]} \
-    -o ${IODIR}/Astyanax_v1genome_183_samples.full.vcf \ . ### Is this line going to name each sample's vcf the same thing?? In the v2 script it looks like each vcf gets a unique ID
+    -o ${IODIR}/Cavefish_v1_183samples.wInvariant.vcf \ . ### Is this line going to name each sample's vcf the same thing?? In the v2 script it looks like each vcf gets a unique ID
     -nt 24 \
     --includeNonVariantSites
 
