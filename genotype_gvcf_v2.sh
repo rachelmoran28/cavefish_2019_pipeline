@@ -49,4 +49,4 @@ java -Djava.io.tmpdir=/scratch.local \
     ${GATK_IN[@]} \
     --includeNonVariantSites \
     --heterozygosity 0.005 \
-    -o ${OUTPUT_DIR}/Surfacefish_v2_183samples_wInvariant.vcf
+    -o ${OUTPUT_DIR}/Surfacefish_v2_186samples_wInvariant.vcf
