@@ -39,7 +39,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -R ${REF} \
     -L ${REGION}/vcf_intervals.list \ 
     ${GATK_IN[@]} \
-    -o ${IODIR}/Cavefish_v1_183samples.wInvariant.vcf \ 
+    -o ${IODIR}/Cavefish_v1_186samples.wInvariant.vcf \ 
     -nt 16 \
     --includeNonVariantSites
 
