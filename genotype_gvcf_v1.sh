@@ -17,6 +17,7 @@ module load gatk/3.7.0 #used for V1 genome for compatibility with Eli's stuff.
 #   V1
 REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.AstMex102.dna.toplevel.fa"
 IODIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v1_cavefish"
+REGION="/home/mcgaughs/shared/References/Astyanax_mexicanus_102"
 
 #fix path to GATK
 GATK=/panfs/roc/msisoft/gatk/3.7.0/GenomeAnalysisTK.jar
@@ -36,10 +37,10 @@ java -Djava.io.tmpdir=/scratch.local \
     -jar ${GATK} \
     -T GenotypeGVCFs \
     -R ${REF} \
-    -L ${IODIR}/vcf_restart3_intervals.list \ . ### Scaffold list? In the v2 script this list includes Chr 1-25 and then Chr Un (all unplaced scaffolds get grouped together?)
+    -L ${REGION}/vcf_intervals.list \ 
     ${GATK_IN[@]} \
-    -o ${IODIR}/Cavefish_v1_183samples.wInvariant.vcf \ . ### Is this line going to name each sample's vcf the same thing?? In the v2 script it looks like each vcf gets a unique ID
-    -nt 24 \
+    -o ${IODIR}/Cavefish_v1_183samples.wInvariant.vcf \ 
+    -nt 16 \
     --includeNonVariantSites
 
 echo -n "Done: "
