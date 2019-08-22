@@ -17,9 +17,9 @@ REF="/home/mcgaughs/shared/References/2017-09_Astyanax_mexicanus/7994_ref_Astyan
 #   V1
 #REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.AstMex102.dna.toplevel.fa"
 REGFOF="/home/mcgaughs/shared/References/2017-09_Astyanax_mexicanus/GATK_Regions.fof"
-GVCF_DIR="/home/mcgaughs/shared/Datasets/Variant_Calls/Astyanax_mexicanus_v2/Combined_GVCFs"
+GVCF_DIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v2_surfacefish"
 
-OUTPUT_DIR="" # Need to make an output direcotry for this step
+OUTPUT_DIR="/home/mcgaughs/shared/Datasets/all_sites_LARGE_gvcf/raw_surfacefish" 
 
 # Build the sample list
 SAMPLE_LIST=($(find ${GVCF_DIR} -name '*.g.vcf.gz' | sort -V))
