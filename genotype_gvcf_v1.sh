@@ -18,6 +18,7 @@ module load gatk/3.7.0 #used for V1 genome for compatibility with Eli's stuff.
 REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.AstMex102.dna.toplevel.fa"
 IODIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v1_cavefish"
 REGION="/home/mcgaughs/shared/References/Astyanax_mexicanus_102"
+OUTDIR="/home/mcgaughs/shared/Datasets/all_sites_LARGE_gvcf/raw_cavefish"
 
 #fix path to GATK
 GATK=/panfs/roc/msisoft/gatk/3.7.0/GenomeAnalysisTK.jar
@@ -39,7 +40,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -R ${REF} \
     -L ${REGION}/vcf_intervals.list \ 
     ${GATK_IN[@]} \
-    -o ${IODIR}/Cavefish_v1_186samples.wInvariant.vcf \ 
+    -o ${OUTDIR}/Cavefish_v1_186samples.wInvariant.vcf \ 
     -nt 16 \
     --includeNonVariantSites
 
