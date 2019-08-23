@@ -3,7 +3,7 @@
 #PBS -m abe
 #PBS -M rmoran@umn.edu
 #PBS -q mesabi
-#PBS t 1-21
+#PBS -t 1-21
 
 # Load modules
 module load java
