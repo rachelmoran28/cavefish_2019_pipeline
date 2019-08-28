@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -l mem=126gb,nodes=1:ppn=16,walltime=96:00:00
+#PBS -l mem=62gb,nodes=1:ppn=12,walltime=96:00:00
 #PBS -m abe
 #PBS -M rmoran@umn.edu
-#PBS -q sb128
+#PBS -q mcgaugh
 #PBS -N genomeV1_genotyping
 #PBS -j oe
 
@@ -11,38 +11,41 @@ date
 
 # Load modules
 module load java
-module load gatk/3.7.0 #used for V1 genome for compatibility with Eli's stuff.
 
 # Set paths
 #   V1
 REF="/home/mcgaughs/shared/References/Astyanax_mexicanus_102/Astyanax_mexicanus.AstMex102.dna.toplevel.fa"
-IODIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v1_cavefish"
+GVCF_DIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v1_cavefish/gvcfs"
 REGION="/home/mcgaughs/shared/References/Astyanax_mexicanus_102"
 OUTDIR="/home/mcgaughs/shared/Datasets/all_sites_LARGE_gvcf/raw_cavefish"
 
 #fix path to GATK
-GATK=/panfs/roc/msisoft/gatk/3.7.0/GenomeAnalysisTK.jar
+GATK="/home/mcgaughs/shared/Software/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar"
 
-VCFS=($(find ${IODIR}/GVCFs -type f -name *.g.vcf.gz))
+
+SAMPLE_LIST=($(find ${GVCF_DIR} -maxdepth 1 -name '*.g.vcf.gz' | sort -V))
 
 GATK_IN=()
-
-for f in ${VCFS[@]}
+for s in "${SAMPLE_LIST[@]}"
 do
-	GATK_IN+=("-V $f")
+    GATK_IN+=("-V $s")
 done
 
 
-export _JAVA_OPTIONS="-Xmx990g"
-java -Djava.io.tmpdir=/scratch.local \
+export _JAVA_OPTIONS="-Xmx61000m"
+java -Djava.io.tmpdir=/panfs/roc/scratch/rmoran/java_tmp \
     -jar ${GATK} \
     -T GenotypeGVCFs \
     -R ${REF} \
-    -L ${REGION}/vcf_intervals.list \ 
+    -L ${REGION}/vcf_intervals.list \
+    -nt 12 \
     ${GATK_IN[@]} \
-    -o ${OUTDIR}/Cavefish_v1_186samples.wInvariant.vcf \ 
-    -nt 16 \
-    --includeNonVariantSites
+    --heterozygosity 0.005 \
+    --includeNonVariantSites \
+    -o ${OUTDIR}/Cavefish_v1_186samples.wInvariant.vcf 
 
 echo -n "Done: "
 date
+
+
+cd /home/mcgaughs/shared/Datasets/all_sites_LARGE_gvcf/raw_cavefish; chmod 770 Cavefish_v1_186samples.wInvariant.vcf
