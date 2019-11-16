@@ -38,7 +38,7 @@ For each sample, processed reads were aligned to both the cavefish (v1) and the 
 
 Rather than using parallel used array jobs for alignments, which is more efficient. 
 
-The script make_align_jobs_all_raw.sh will generate jobs (a list of commands, one for each sample) that can be specified in the array script array_map.sh. Run the following command to get the list of commands writted to the file raw_bwa_commands_cavefish.txt (can modify make_align_jobs_all_raw.sh for alignment to cave or sruface genome):
+The script make_align_jobs_all_raw.sh will generate jobs (a list of commands, one for each sample) that can be specified in the array script array_map.sh. Run the following command to get the list of commands written to the file raw_bwa_commands_cavefish.txt (can modify make_align_jobs_all_raw.sh for alignment to cave or sruface genome):
 
 ./make_align_jobs_all_raw.sh > raw_bwa_commands_cavefish.txt
 
