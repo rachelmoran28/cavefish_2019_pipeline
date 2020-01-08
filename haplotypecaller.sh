@@ -48,6 +48,7 @@ export _JAVA_OPTIONS="-Xmx61g"
 OUTDIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v1_cavefish"
 #OUTDIR="/home/mcgaughs/shared/Datasets/per_individual.g.vcfs/v2_surfacefish"
 
+#Note: --emitRefConfidence option should be BP_RESOLUTION, not GVCF
 
 export _JAVA_OPTIONS="-Xmx61g"
 java -jar ${GATK} \
@@ -58,7 +59,7 @@ java -jar ${GATK} \
     -nct 24 \
     --genotyping_mode DISCOVERY \
     --heterozygosity 0.005 \
-    --emitRefConfidence GVCF \
+    --emitRefConfidence BP_RESOLUTION \
     -variant_index_type LINEAR \
     -variant_index_parameter 128000
 
