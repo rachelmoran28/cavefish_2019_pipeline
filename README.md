@@ -99,3 +99,10 @@ Used mapped bams for gatk haplotype caller.
 haplotypecaller.sh can be modified for use with cave or surface aligned bams.
 
 
+########################################################################
+
+Step 6: GenotypeGVCFs
+
+Combine individual gvcfs into large VCF files.
+
+
