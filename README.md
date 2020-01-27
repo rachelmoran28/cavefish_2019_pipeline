@@ -63,6 +63,7 @@ For each raw bam file generated in Step 2, use picard to mark duplicates and add
 Again need to generate a list of commands to feed into an array script:
 
 ./make_picard_cavefish_commands.sh > picard_cavefish_commands.txt
+
 ./make_picard_surface_commands.sh > picard_surface_commands.txt
 
 Then, edit array_picard.sh to include the .txt file with the commands you want to submit as an array job.
