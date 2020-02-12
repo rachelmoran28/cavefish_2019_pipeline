@@ -20,7 +20,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -jar ${GATK} \
     -T SelectVariants \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
-    -select-type SNP \
+    -selectType SNP \
     -o ${FILTERED}/subset_snps/Chr4_Surfacefish_snps_subset.vcf.gz
 echo -n "Done: subset snps"
 date
@@ -32,7 +32,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -jar ${GATK} \
     -T SelectVariants \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
-    -select-type MIXED \
+    -selectType MIXED \
     -o ${FILTERED}/subset_mixed/Chr4_Surfacefish_mixed_subset.vcf.gz
 echo -n "Done: subset mixed"
 date
