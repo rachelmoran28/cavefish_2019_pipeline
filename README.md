@@ -107,3 +107,15 @@ Step 6: GenotypeGVCFs
 Combine individual gvcfs into large VCF files.
 
 
+########################################################################
+
+Step 7: Subset variants by type, filter, and combine
+
+
+########################################################################
+
+Step 8: Filter for bi-allelic sites only and thin VCF
+
+
+
+
