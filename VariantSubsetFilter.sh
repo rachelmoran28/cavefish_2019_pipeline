@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l mem=62gb,nodes=1:ppn=1,walltime=24:00:00
+#PBS -l mem=62gb,nodes=1:ppn=24,walltime=96:00:00
 #PBS -A mcgaughs
 #PBS -m abe
 #PBS -M rmoran@umn.edu
@@ -21,6 +21,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -T SelectVariants \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
     -selectType SNP \
+    -nt 24 \
     -o ${FILTERED}/subset_snps/Chr4_Surfacefish_snps_subset.vcf.gz
 echo -n "Done: subset snps"
 date
@@ -33,6 +34,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -T SelectVariants \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
     -selectType MIXED \
+    -nt 24 \
     -o ${FILTERED}/subset_mixed/Chr4_Surfacefish_mixed_subset.vcf.gz
 echo -n "Done: subset mixed"
 date
@@ -49,6 +51,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -filter "MQ < 40.0" --filter-name "MQ40" \
     -filter "MQRankSum < -12.5" --filter-name "MQRankSum-12.5" \
     -filter "ReadPosRankSum < -8.0" --filter-name "ReadPosRankSum-8" \
+    -nt 24 \
     -o ${FILTERED}/filtered_snps/Chr4_Surfacefish_snps_filtered.vcf.gz \
 echo -n "Done: filter snps"
 date
@@ -65,6 +68,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -filter "QD < 2.0" --filter-name "QD2" \
     -filter "FS > 200.0" --filter-name "FS200" \
     -filter "ReadPosRankSum < -20.0" --filter-name "ReadPosRankSum-20" \
+    -nt 24 \
     -o ${FILTERED}/filtered_mixed/Chr4_Surfacefish_mixed_filtered.vcf.gz
 echo -n "Done: filter mixed"
 date
@@ -78,6 +82,7 @@ java -Djava.io.tmpdir=/scratch.local \
     -R ${REF} \
     -V ${FILTERED}/filtered_snps/Chr4_Surfacefish_snps_filtered.vcf.gz  \
     -V ${FILTERED}/filtered_mixed/Chr4_Surfacefish_mixed_filtered.vcf.gz  \
+    -nt 24 \
     -o ${FILTERED}/combined_filtered/Chr4_Surfacefish_filtered.vcf.gz 
 echo -n "Done: combine filtered sets"
 date
