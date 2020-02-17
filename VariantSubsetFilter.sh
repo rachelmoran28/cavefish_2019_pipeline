@@ -86,3 +86,16 @@ java -Djava.io.tmpdir=/scratch.local \
     -o ${FILTERED}/combined_filtered/Chr4_Surfacefish_filtered.vcf.gz 
 echo -n "Done: combine filtered sets"
 date
+
+#Only retain variants that have passed the filters
+export _JAVA_OPTIONS="-Xmx61g"
+java -Djava.io.tmpdir=/scratch.local \
+    -jar ${GATK} \ 
+    -T SelectVariants \
+    -R ${REF} \
+    -V ${FILTERED}/combined_filtered/Chr4_Surfacefish_filtered.vcf.gz 
+    -select 'vc.isNotFiltered()' \
+    -o {FILTERED}/combined_filtered/Chr4_Surfacefish_filtered_variants_only.vcf.gz 
+
+echo -n "Done: select filtered variants"
+date
