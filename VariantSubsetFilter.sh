@@ -18,7 +18,8 @@ FILTERED=/home/mcgaughs/shared/Datasets/all_sites_LARGE_gvcf/filtered_surfacefis
 export _JAVA_OPTIONS="-Xmx61g"
 java -Djava.io.tmpdir=/scratch.local \
     -jar ${GATK} \
-    -T SelectVariants \
+    -T SelectVariants \    
+    -R ${REF} \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
     -selectType SNP \
     -nt 24 \
@@ -32,6 +33,7 @@ export _JAVA_OPTIONS="-Xmx61g"
 java -Djava.io.tmpdir=/scratch.local \
     -jar ${GATK} \
     -T SelectVariants \
+    -R ${REF} \
     -V ${RAW}/Chr_4_Surfacefish_v2_267samples_wInvariant.vcf.gz \
     -selectType MIXED \
     -nt 24 \
