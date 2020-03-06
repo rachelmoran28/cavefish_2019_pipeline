@@ -187,7 +187,7 @@ ${GATK4} --java-options "-Xmx990g" MergeVcfs \
     -I ${FILTERED}/filtered_snps/${REG_OUT}_Surfacefish_snps_filtered_PASS_ONLY.vcf  \
     -I ${FILTERED}/filtered_mixed/${REG_OUT}_Surfacefish_mixed_indels_filtered_PASS_ONLY.vcf  \
     -I ${FILTERED}/filtered_mono/${REG_OUT}_Surfacefish_mono_filtered_PASS_ONLY.vcf  \
-    -o ${FILTERED}/combined_filtered/${REG_OUT}_Surfacefish_filtered_all_combined_PASS_ONLY.vcf
+    -O ${FILTERED}/combined_filtered/${REG_OUT}_Surfacefish_filtered_all_combined_PASS_ONLY.vcf
 
 echo -n "Done: merge all filtered sets"
 date
