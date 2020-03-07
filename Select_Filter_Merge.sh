@@ -92,11 +92,11 @@ date
 
 #Apply hard-filter flags to mono sites 
 java -Djava.io.tmpdir=/scratch.local -jar ${GATK} -T VariantFiltration -R ${REF} \
-    -V ${FILTERED}/subset_mono/Chr_5_Surfacefish_mono_subset.vcf \
+    -V ${FILTERED}/subset_mono/${REG_OUT}_Surfacefish_mono_subset.vcf \
     -filter "QD < 2.0" -filterName "QD2" \
     -filter "FS > 60.0" -filterName "FS60" \
     -filter "MQ < 40.0" -filterName "MQ40" \
-    -o ${FILTERED}/filtered_mono/Chr_5_Surfacefish_mono_filtered.vcf
+    -o ${FILTERED}/filtered_mono/${REG_OUT}_Surfacefish_mono_filtered.vcf
 
 echo -n "Done: filter mono"
 date
@@ -135,10 +135,10 @@ date
 
 #Retian monomorphic sites that PASS filters
 java -Djava.io.tmpdir=/scratch.local -jar ${GATK} -T SelectVariants -R ${REF} \
-    -V ${FILTERED}/filtered_mono/Chr_5_Surfacefish_mono_filtered.vcf \
+    -V ${FILTERED}/filtered_mono/${REG_OUT}_Surfacefish_mono_filtered.vcf \
     -nt 32 \
     --excludeFiltered \
-    -o ${FILTERED}/filtered_mono/Chr_5_Surfacefish_mono_filtered_PASS_ONLY.vcf
+    -o ${FILTERED}/filtered_mono/${REG_OUT}_Surfacefish_mono_filtered_PASS_ONLY.vcf
 
 echo -n "Done: subset PASS mono"
 date
