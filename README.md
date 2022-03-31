@@ -1,10 +1,6 @@
 This is a repository for scripts used by Rachel Moran to process raw cavefish genomic data for use in populations genomic analyses in Summer 2019.
 
 
-Re-started pipeline from raw reads for Caballo Moro, Jineo, Escondido, and new samples from Josh Gross and UMGC ("June2019" samples).
-
-Used Adam’s pipeline and Adam's alignments for all other individuals (https://github.umn.edu/aherman/cavefish_RIS).
-
 
 ########################################################################
 
